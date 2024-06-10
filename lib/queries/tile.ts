@@ -19,7 +19,8 @@ SELECT
     'count', size, 
     'expansionZoom', expansionZoom, 
     'lng', ST_X(ST_Transform(${geometry}, 4326)), 
-    'lat', ST_Y(ST_Transform(${geometry}, 4326))${attributes}
+    'lat', ST_Y(ST_Transform(${geometry}, 4326))${attributes}, 
+    'duplicates', COUNT(*) OVER (PARTITION BY ${geometry})
   ) AS attributes
 FROM ${table}
 `;
