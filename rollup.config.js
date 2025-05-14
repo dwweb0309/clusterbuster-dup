@@ -1,4 +1,3 @@
-import run from 'rollup-plugin-run';
 import babel from 'rollup-plugin-babel';
 import resolve from 'rollup-plugin-node-resolve';
 import commonjs from 'rollup-plugin-commonjs';
@@ -32,12 +31,6 @@ export default [
       babel({
         exclude: ['node_modules/**', '**/__test__/**'],
         extensions: ['.js', '.ts'],
-      }),
-      run({
-        env: {
-          ENV_FILE: '.development.env',
-        },
-        execArgv: ['-r', 'source-map-support/register'],
       }),
     ],
   },
